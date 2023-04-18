@@ -1,0 +1,23 @@
+.Footer-styles {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    background-color: blueviolet;
+}
+
+.Footertoolbaredit {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.Aboutdetails {
+    display: flex;
+    flex-direction: column;
+}
+
+.contactdetails {
+    display: flex;
+    flex-direction: column;
+}

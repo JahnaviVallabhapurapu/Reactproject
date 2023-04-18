@@ -1,0 +1,25 @@
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    
+}
+
+/* .first {
+    background-color: aqua;
+}
+
+.second {
+    background-color: brown;
+}
+
+.third {
+    background-color: blue;
+}
+
+.forth {
+    background-color: cadetblue;
+} */

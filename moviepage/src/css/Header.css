@@ -1,0 +1,27 @@
+.header-style {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: blueviolet;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+}
+
+.toolbar-edit {
+    display: flex;
+    justify-content: space-between;
+}
+
+.aboutcontact {
+    display: flex;
+    text-decoration: none;
+    justify-content: space-around;
+    /* width: 20%; */
+}
+
+a {
+    text-decoration: none;
+}
