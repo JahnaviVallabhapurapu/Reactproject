@@ -11,6 +11,7 @@ import Formcontent from './components/Formcontent';
 import Textswitch from './components/textswitch';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
+import Profile from './components/profiles/Profile';
 function App() {
 
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path='Loginpage' element={<SignIn></SignIn>}></Route>
           <Route path='SignUp' element={<SignUp></SignUp>}></Route>
           <Route path='SignIn' element={<SignIn></SignIn>}></Route>
+          <Route path='Profile' element={<Profile></Profile>}></Route>
           {/* <Route Path='Aboutus' element={<Aboutus></Aboutus>}></Route>
           <Route path='calculator' element={<Calculator></Calculator>}></Route>
           <Route path='Formcontent' element={<Formcontent></Formcontent>}></Route>

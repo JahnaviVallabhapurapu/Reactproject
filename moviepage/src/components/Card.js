@@ -25,11 +25,12 @@ export default function CardTile(props) {
     return (
 
 
-        <Card sx={{ maxWidth: 345 }} >
+        <Card sx={{ width: 345 } } >
 
-            <CardHeader action={<IconButton><DeleteIcon></DeleteIcon></IconButton>}></CardHeader>
+            <CardHeader action={<><IconButton><DeleteIcon></DeleteIcon></IconButton>
+            <IconButton><ModeEditIcon></ModeEditIcon></IconButton></>}></CardHeader>
             <CardMedia
-                sx={{ height: 140 }}
+                sx={{ height: 140, maxHeight: 140 }}
                 image={props.image}
 
             />
@@ -37,7 +38,7 @@ export default function CardTile(props) {
                 <Typography variant="h5" component="div">
 
                     <Button className="ColourChanges" onClick={() => {
-                        alert('Hello');
+                        // alert('Hello');
                     }
                     }
                     >

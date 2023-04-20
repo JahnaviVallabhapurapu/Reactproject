@@ -11,10 +11,9 @@ const
     Main = (props) => {
 
         return (
-            <Grid container className="container">
-           
-                <CardTile  image={props.image} title={props.title} language={props.language} field={props.field} />
-            </Grid>
+            // <div className='container'>
+            <CardTile image={props.image} title={props.title} language={props.language} field={props.field} />
+            //</div>
         )
     }
 
