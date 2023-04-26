@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState} from "react"; 
 import { Card, CardHeader } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import CardActions from '@mui/material/CardActions';
@@ -11,94 +11,104 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import ModeEditIcon from '@mui/icons-material/ModeEdit';
-
-
+import axios from "axios";
+import './Moviedeatils';
+import {useNavigate} from "react-router-dom"
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
     return <IconButton {...other} />;
 })
-export default function CardTile(props) {
-    console.log("Data:", props.title)
-    // if (props.title == "coco") {
+const CardTile = () => {
+    const [content, setcontent] = useState([]);
+    const [imgUrl, setImgUrl] = useState('')
+    useEffect(() => {
+        axios.get("http://localhost:1337/api/movies?populate=*")
+            .then(data => {
+                console.log(data)
+                setcontent(data)
+                //setImgUrl(data.data.attributes.image.data.attributes.formats.thumbnail.url)
+            });
+    }, []);
+    const navigation = useNavigate();
 
+    const handleDetailsClick = (id) => {
+        navigation(`/Moviedetails/${id}`);
+    }
+
+    //console.log(imgUrl)
     return (
+        <>
+
+            {content.status == 200 && content.data.data.map((obj, index) => (
+                <Card sx={{ width: 345 }} key={index}>
+                    <CardHeader action={<><IconButton><DeleteIcon></DeleteIcon></IconButton>
+                        <IconButton><ModeEditIcon></ModeEditIcon></IconButton></>}></CardHeader>
+                    <CardMedia
+                        sx={{ height: 140, maxHeight: 140 }}
+                        image={`http://localhost:1337${obj.attributes.image.data.attributes.url}`}
+
+                    />
+                    <CardContent >
+                        <Typography variant="h5" component="div">
+
+                            <Button variant="contained" onClick={()=>handleDetailsClick(obj.id)}>
+                                title:{obj.attributes.title}
+                            </Button>
+
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            genre:{obj.attributes.genre}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            release_date:{obj.attributes.release_date}
+                        </Typography>
+                    </CardContent>
+
+                </Card>
+            ))}
+
+        </>
+        // }
+        // else {
+        //     {
+
+        //         return (
+
+        //             <Card sx={{ maxWidth: 345 }}>
+        //                 <CardHeader action={<IconButton aria-label={DeleteIcon}><MoreVertIcon /></IconButton>}></CardHeader>
+        //                 <CardMedia
+        //                     sx={{ height: 140 }}
+        //                     image={props.image}
+
+        //                 />
+        //                 <CardContent >
+        //                     <Typography variant="h5" component="div">
+
+        //                         <Button onClick={() => {
+        //                             alert('Hello');
+        //                         }
+        //                         }
+        //                         >
+        //                             {props.title}
+        //                         </Button>
 
 
-        <Card sx={{ width: 345 } } >
-
-            <CardHeader action={<><IconButton><DeleteIcon></DeleteIcon></IconButton>
-            <IconButton><ModeEditIcon></ModeEditIcon></IconButton></>}></CardHeader>
-            <CardMedia
-                sx={{ height: 140, maxHeight: 140 }}
-                image={props.image}
-
-            />
-            <CardContent >
-                <Typography variant="h5" component="div">
-
-                    <Button className="ColourChanges" onClick={() => {
-                        // alert('Hello');
-                    }
-                    }
-                    >
-                        {props.title}
-                    </Button>
+        //                     </Typography>
+        //                     <Typography variant="body2" color="text.secondary">
+        //                         {props.field}
+        //                     </Typography>
+        //                     <Typography variant="body2" color="text.secondary">
+        //                         {props.language}
+        //                     </Typography>
+        //                 </CardContent>
 
 
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    {props.field}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                    {props.language}
-                </Typography>
-            </CardContent>
-
-
-
-        </Card>
-
+        //             </Card>
+        //         )
+        //     }
+        // }
     )
-    // }
-    // else {
-    //     {
-
-    //         return (
-
-    //             <Card sx={{ maxWidth: 345 }}>
-    //                 <CardHeader action={<IconButton aria-label={DeleteIcon}><MoreVertIcon /></IconButton>}></CardHeader>
-    //                 <CardMedia
-    //                     sx={{ height: 140 }}
-    //                     image={props.image}
-
-    //                 />
-    //                 <CardContent >
-    //                     <Typography variant="h5" component="div">
-
-    //                         <Button onClick={() => {
-    //                             alert('Hello');
-    //                         }
-    //                         }
-    //                         >
-    //                             {props.title}
-    //                         </Button>
-
-
-    //                     </Typography>
-    //                     <Typography variant="body2" color="text.secondary">
-    //                         {props.field}
-    //                     </Typography>
-    //                     <Typography variant="body2" color="text.secondary">
-    //                         {props.language}
-    //                     </Typography>
-    //                 </CardContent>
-
-
-    //             </Card>
-    //         )
-    //     }
-    // }
 }
 
 // import { useEffect, useState } from "react";
@@ -145,4 +155,4 @@ export default function CardTile(props) {
 //     }
 
 // }
-// export default CardTile;
+export default CardTile;

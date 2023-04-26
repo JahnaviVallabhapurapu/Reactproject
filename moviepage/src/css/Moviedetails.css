@@ -1,0 +1,17 @@
+.moviedetails {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.moviedetails img {
+
+    width: 650px;
+
+}
+.moviedetails h2 {
+    color: blueviolet;
+    font-size: 13px;
+    text-transform: capitalize;
+    font-style: italic;
+}

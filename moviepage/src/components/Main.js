@@ -8,12 +8,12 @@ import turningred from '../images/p_turningred_22797_1_c17f32af.jpeg';
 import { CardContent } from '@mui/material';
 import Grid from "@mui/material/Grid";
 const
-    Main = (props) => {
+    Main = (image, genre, release_date, title) => {
 
         return (
-            // <div className='container'>
-            <CardTile image={props.image} title={props.title} language={props.language} field={props.field} />
-            //</div>
+            <div className='container'>
+                <CardTile image={image} title={title} genre={genre} release_date={release_date} />
+            </div>
         )
     }
 

@@ -11,11 +11,12 @@ const Header = () => {
                     <img className="logo" src={Icon}></img>
                 </div>
                 <div className="aboutcontact" >
-                    <a href="About us "  >
+                    <span>Disney HUb</span>
+                    {/* <a href="About us "  >
                         About us
                     </a>
                     /
-                    <a href="contact us">Contact us </a>
+                    <a href="contact us">Contact us </a> */}
 
                 </div>
                 <div>
