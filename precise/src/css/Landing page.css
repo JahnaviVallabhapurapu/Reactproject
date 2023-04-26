@@ -1,0 +1,11 @@
+.maincontainer {
+    display: flex;
+    /* flex-direction: row; */
+    justify-content: space-between;
+    height: calc(100% - 128px);
+    box-sizing: border-box;
+    flex-flow: row wrap;
+    gap: 10px;
+    overflow: auto;
+
+}
