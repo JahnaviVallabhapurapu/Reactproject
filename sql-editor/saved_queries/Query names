@@ -1,0 +1,9 @@
+
+
+SELECT 
+    DATE_TRUNC('day', o_orderdate) as date,
+    COUNT(*) as daily_count
+  FROM data_market.dev.urgent_orders
+  GROUP BY DATE_TRUNC('day', o_orderdate)
+  ORDER BY date DESC
+  LIMIT 30
